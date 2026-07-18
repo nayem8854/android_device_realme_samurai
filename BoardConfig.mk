@@ -67,6 +67,18 @@ BOARD_RAMDISK_USE_LZ4 := true
 TARGET_KERNEL_CONFIG := samurai_defconfig vendor/debugfs.config
 TARGET_KERNEL_SOURCE := kernel/realme/sm8150
 
+# Kernel Clang Flags
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := r563880c
+TARGET_KERNEL_LLVM_BINUTILS := true
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    LLVM=1 \
+    LLVM_IAS=1 \
+    HOSTCC=clang \
+    HOSTCXX=clang++ \
+    HOSTLD=ld.lld \
+    HOSTAR=llvm-ar
+
 # Platform
 TARGET_BOARD_PLATFORM := msmnile
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
@@ -166,6 +178,7 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/phoneinfo.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 

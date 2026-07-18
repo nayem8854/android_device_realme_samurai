@@ -5,4 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_samurai.mk
+    $(LOCAL_DIR)/infinity_samurai.mk
+
+COMMON_LUNCH_CHOICES := \
+    infinity_samurai-user \
+    infinity_samurai-userdebug \
+    infinity_samurai-eng
