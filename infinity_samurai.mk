@@ -6,15 +6,15 @@
 
 $(call inherit-product, device/realme/samurai/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Infinity stuff.
+$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_BRAND := realme
 PRODUCT_DEVICE := samurai
 PRODUCT_MANUFACTURER := realme
 PRODUCT_MODEL := realme X2 Pro
-PRODUCT_NAME := lineage_samurai
+PRODUCT_NAME := infinity_samurai
 
 BUILD_FINGERPRINT := realme/RMX1931/RMX1931L1:11/RKQ1.200928.002/1625457120608:user/release-keys
 
@@ -27,3 +27,17 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     SystemName=RMX1931
 
 PRODUCT_GMS_CLIENTID_BASE := android-oppo
+
+# Infinity-X
+TARGET_HAS_UDFPS := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_SUPPORTS_BLUR := true
+
+# GApps defaults; override WITH_GAPPS=false at lunch for vanilla builds.
+WITH_GAPPS := true
+ifeq ($(WITH_GAPPS),true)
+TARGET_BUILD_GOOGLE_TELEPHONY := true
+TARGET_SHIPS_FULL_GAPPS := true
+endif
+
+INFINITY_MAINTAINER := NAYEM
