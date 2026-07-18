@@ -28,6 +28,9 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/realme/samurai/samurai-vendor.mk)
 
+# Dolby Atmos (LunarisAOSP)
+$(call inherit-product, vendor/lunaris/dolby/dolby.mk)
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080

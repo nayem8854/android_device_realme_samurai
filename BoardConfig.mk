@@ -99,11 +99,12 @@ TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 TARGET_USES_FOD_ZPOS := true
 
 # Hidl
+# Use += so vendor/lunaris/dolby (and other includes) can append VINTF entries.
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/device_framework_matrix.xml \
     hardware/oplus/vintf/device_framework_matrix.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 
 # Metadata
@@ -192,3 +193,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
 include vendor/realme/samurai/BoardConfigVendor.mk
+
+# Dolby Atmos (LunarisAOSP) — sepolicy, odm props, proprietary board bits
+include vendor/lunaris/dolby/BoardConfigDolby.mk
