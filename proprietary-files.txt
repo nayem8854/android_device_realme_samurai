@@ -143,13 +143,14 @@ odm/lib64/libarcsoft_dualcam_refocus_preview.so:vendor/lib64/libarcsoft_dualcam_
 odm/lib64/libarcsoft_dualcam_refocus_right.so:vendor/lib64/libarcsoft_dualcam_refocus_right.so|dcb4bb1e1b088625933e3abe45d66c64a61a20b0
 odm/lib64/libarcsoft_hdr_couple_api.so:vendor/lib64/libarcsoft_hdr_couple_api.so|3ed63cd3268ebe3325e84de50dbebb3bee085a7c
 odm/lib64/libarcsoft_hdr_denoise_api.so:vendor/lib64/libarcsoft_hdr_denoise_api.so|2f579d1237911c715c17033b922d99f6767042d7
-odm/lib64/libarcsoft_hdrplus_hvx_stub.so:vendor/lib64/libarcsoft_hdrplus_hvx_stub.so|5c2a62f5674aa81ecb66e6cba4d848e56ac7b8ea
+# Absent on Global F.14; stack uses *_5221_* stubs instead
+-odm/lib64/libarcsoft_hdrplus_hvx_stub.so:vendor/lib64/libarcsoft_hdrplus_hvx_stub.so|5c2a62f5674aa81ecb66e6cba4d848e56ac7b8ea
 odm/lib64/libarcsoft_high_dynamic_range.so:vendor/lib64/libarcsoft_high_dynamic_range.so|efe0ae5dbad219e198e47a870e475e25452e85eb
 odm/lib64/libarcsoft_high_dynamic_range_couple.so:vendor/lib64/libarcsoft_high_dynamic_range_couple.so|0746fdfb3d710aecffac9d811ab0bcaf2295b4a9
 odm/lib64/libarcsoft_lensstaindetection.so:vendor/lib64/libarcsoft_lensstaindetection.so|ad7ea3a3fc9695f1d29d86cb043405eb35017451
 odm/lib64/libarcsoft_low_light_hdr.so:vendor/lib64/libarcsoft_low_light_hdr.so|dc7ead79bca04b69884f4d0abba20455b24f3e32
 odm/lib64/libarcsoft_portrait_super_night_raw.so:vendor/lib64/libarcsoft_portrait_super_night_raw.so|7151d01a5f10479c4eb1665cd346029dceff4fd2
-odm/lib64/libarcsoft_portraitSN_hvx_stub.so:vendor/lib64/libarcsoft_portraitSN_hvx_stub.so|f86acec4f27855c2aa6383bcd027634d2fa1fb49
+-odm/lib64/libarcsoft_portraitSN_hvx_stub.so:vendor/lib64/libarcsoft_portraitSN_hvx_stub.so|f86acec4f27855c2aa6383bcd027634d2fa1fb49
 odm/lib64/libarcsoft_scbokeh_video.so:vendor/lib64/libarcsoft_scbokeh_video.so|5d2dafc3588e88f1ee8a2437346de3bd543ce989
 odm/lib64/libarcsoft_smart_denoise.so:vendor/lib64/libarcsoft_smart_denoise.so|6e904b17a255417e1ab11f97d44a7874b953e2fe
 odm/lib64/libarcsoft_super_night_raw.so:vendor/lib64/libarcsoft_super_night_raw.so|dfed0a8ffd3a6800ec1e108fee22949680820a7b
@@ -160,7 +161,7 @@ odm/lib64/libAncHumBokehPost.so|b929daafcad26352850496e8bd137db087e15695
 odm/lib64/libAncHumVideoBase.so|950b4349268011e13636cc26bc8442e77835feed
 odm/lib64/libWaterMark.so|b6fe0139979683579f723116d1f5c2bfb1f95a60
 odm/lib64/libWaterMode.so|5c3de056b4c4fd3cfc1f87db00e40d27ca1fd963
-odm/lib64/libOPLUS_SCPortrait.so|582272e788680d3c5b498556ee98a904b5fc2a8c
+-odm/lib64/libOPLUS_SCPortrait.so|582272e788680d3c5b498556ee98a904b5fc2a8c
 odm/lib64/libSNPE.so|f3ffab1527763de07abd6ea4889673574b3b1a48
 odm/lib64/libSNPE_G.so|11ba8cf9522ff49013cad25b229e2687fd1e0b3b
 odm/lib64/libTrafficMode.so|e038c755a90843bbb00dccfbbc3eaf2655c603d7
@@ -176,16 +177,16 @@ odm/lib64/libVDUpScale.so|af642564b8f94e277061a66d3a1afb9586b6358a
 odm/lib64/libXDocProcessSDK.so|50493f235153f606739c09142da7c0e2436e67c3
 odm/lib64/lib_rectify.so|9c60faed5b65a6d4bac9f2e5a64417bada37afed
 odm/lib64/libancbase_rt_bokeh.so|701429feff5b02bd2353ee4240fa1c652ce811df
-odm/lib64/libancbase_rt_retain.so|b2e9f9205ab77f4d741cdd32523a66711f8ab049
-odm/lib64/libaps_frame_registration.so|ae277a0d501e3d5f725fb971714d360b0f2477ab
-odm/lib64/libapsdarksight.so|b6e68a7c29766f6282cc44c76d3120ee0335c2f9
+-odm/lib64/libancbase_rt_retain.so|b2e9f9205ab77f4d741cdd32523a66711f8ab049
+-odm/lib64/libaps_frame_registration.so|ae277a0d501e3d5f725fb971714d360b0f2477ab
+-odm/lib64/libapsdarksight.so|b6e68a7c29766f6282cc44c76d3120ee0335c2f9
 odm/lib64/libapsexif.so|cc8a750208dcb21a5a7fb2b258c01318fed9c557
 odm/lib64/libapsjpeg.so|74f806e6945a8f0af8abe7c96cea7da0098bafbc
 odm/lib64/libc++_shared.so|d5ba162c9b3165804df81d3260b7dcf32a1a46be
 odm/lib64/libmpbase.so|0bded0d4b202799bb5584c4a0415050a64c5abab
 odm/lib64/libhwconfigurationutil.so|098530651cd221f2bf6f819e84194a3523681131
 odm/lib64/libstblur_api.so|d1f206c699f409349b35adfb8164027b47808789
-odm/lib64/libstblur_capture_api.so|ea70251fe96252d9c7012a698d0135c0e1be364d
+-odm/lib64/libstblur_capture_api.so|ea70251fe96252d9c7012a698d0135c0e1be364d
 odm/lib64/libstface_fd_api.so|b0c197965aa644f3de398ac1cdb9e1de10cfcd97
 odm/lib64/libsymphony-cpu.so|521e63af19b3fd51b12bb48f95b3f58a90068cc2
 odm/lib64/libsymphonypower.so|55d98fe86f9967163bbfb297cdf3a1784dc94a58
@@ -249,7 +250,7 @@ vendor/lib64/camera/com.qti.sensor.imx471.so|ffc4518406f3c66247cdefc070e7c7343cf
 vendor/lib64/camera/com.qti.sensor.ov02a1b.so|7c643d82738addd296177f150fb2606844395bdb
 vendor/lib64/camera/com.qti.sensor.s5k3m5sx.so|bcfa859567b446f2d65f1b9599ae90689d0024b5
 vendor/lib64/camera/com.qti.sensormodule.qtech_s5k3m5sx.bin|b9277c437f582342c17b55d57b2f89f1a86d9e93
-vendor/lib64/camera/com.qti.sensormodule.qtech_imx319.bin|130988824cb6545a95b7e671c5fb442855a3ff27
+-vendor/lib64/camera/com.qti.sensormodule.qtech_imx319.bin|130988824cb6545a95b7e671c5fb442855a3ff27
 vendor/lib64/camera/com.qti.sensormodule.sunny_imx471.bin|6ad97efb93571b2ce830d87bb7c82cb662764527
 vendor/lib64/camera/com.qti.tuned.default.bin|ce5f076c7d594cdd8caa0ca25923b131a27a5af7
 vendor/lib64/camera/com.qti.tuned.qtech_s5k3m5sx.bin|3b7fed14042823c7b85c12078de0fcad9ba55c9c
@@ -317,8 +318,8 @@ odm/lib/rfsa/adsp/libarcsoft_hdrplus_hvx_5221_skel.so
 odm/lib/rfsa/adsp/libarcsoft_psn_hvx_5221_skel.so
 
 # Camera (DSP) - Arcsoft libraries - from OP4A89 SKQ1.211113.001
-odm/lib/rfsa/adsp/libarcsoft_hdrplus_hvx_skel.so|31fb5a9d05d760c7ea9c8610c44424ca6e6d96ec
-odm/lib/rfsa/adsp/libarcsoft_portraitSN_hvx_skel.so|4fb91f4079bfd99f42d08c479670319020f3f3e8
+-odm/lib/rfsa/adsp/libarcsoft_hdrplus_hvx_skel.so|31fb5a9d05d760c7ea9c8610c44424ca6e6d96ec
+-odm/lib/rfsa/adsp/libarcsoft_portraitSN_hvx_skel.so|4fb91f4079bfd99f42d08c479670319020f3f3e8
 
 # Camera (DSP) - Hexagon librarie
 odm/lib/rfsa/adsp/libVDHexagonBlurless_v2_skel.so
