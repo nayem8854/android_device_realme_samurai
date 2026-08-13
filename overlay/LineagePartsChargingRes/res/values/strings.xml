@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-FileCopyrightText: 2026
+     SPDX-License-Identifier: Apache-2.0
+
+     Local copies of LineageParts charging_control strings + samurai Speed
+     limit. Required for RRO aapt2 link AND runtime inflate in LineageParts
+     (see charging.txt: @* package array IDs → NotFoundException).
+-->
+<resources>
+    <string name="charging_control_title">Charging control</string>
+    <string name="charging_control_enable_title">Enable charging control</string>
+    <string name="charging_control_mode_title">Charging mode</string>
+    <string name="charging_control_mode_auto_title">Automatic schedule</string>
+    <string name="charging_control_mode_custom_title">Custom schedule</string>
+    <string name="charging_control_start_time_title">Start time</string>
+    <string name="charging_control_target_time_title">Target time to full charge</string>
+    <string name="charging_control_limit_title">Limit</string>
+
+    <string name="samurai_charging_speed_title">Speed limit</string>
+    <string name="samurai_charging_speed_summary">Peak charge current (cool_down). Default allows full VOOC/SuperVOOC.</string>
+</resources>

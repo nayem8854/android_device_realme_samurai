@@ -1,0 +1,16 @@
+//
+// SPDX-FileCopyrightText: 2026
+// SPDX-License-Identifier: Apache-2.0
+//
+// Injects "Speed limit" into LineageParts Charging control preference screen.
+//
+// Do NOT use resource_libs + @*org.lineageos.lineageparts refs for this XML:
+// aapt2 bakes foreign package IDs (e.g. 0x10xxxxxx) that fail at runtime with
+// Resources$NotFoundException when LineageParts inflates the overlayed screen.
+// Prefer local @string/@array copies in res/values (see charging.txt crash).
+//
+
+runtime_resource_overlay {
+    name: "LineagePartsChargingRes",
+    system_ext_specific: true,
+}

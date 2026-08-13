@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="charging_speed_title">Speed limit</string>
+    <string name="charging_speed_pref_title">Speed limit</string>
+    <string name="charging_speed_pref_summary">While charging. Default allows full VOOC/SuperVOOC.</string>
+    <string name="charging_speed_unavailable">cool_down not available on this build</string>
+    <string name="charging_speed_dialog_title">Speed limit</string>
+</resources>
