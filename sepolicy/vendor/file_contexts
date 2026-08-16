@@ -51,6 +51,7 @@
 /sys/class/power_supply/usb/otg_switch                                                                  u:object_r:sysfs_usb_supply:s0
 /sys/devices/virtual/android_usb/android0/state                                                         u:object_r:sysfs_usb_supply:s0
 
-# Vibrator nodes (oplus vibrator service labels the binary)
+# Vibrator
 /sys/class/leds/vibrator(/.*)?                                                                          u:object_r:sysfs_vibrator:s0
 /sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator(/.*)?                                   u:object_r:sysfs_vibrator:s0
+/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.samurai                        u:object_r:hal_vibrator_default_exec:s0
