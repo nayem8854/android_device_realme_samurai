@@ -16,6 +16,9 @@
 # Health (proprietary binary installed as .samurai; AOSP unit is overridden/disabled)
 /vendor/bin/hw/android\.hardware\.health@2\.1-service\.samurai                                          u:object_r:hal_health_default_exec:s0
 
+# Sensors (custom multihal service)
+/vendor/bin/hw/android\.hardware\.sensors@2\.1-service\.samurai                                         u:object_r:hal_sensors_default_exec:s0
+
 # Modem reason
 /dev/mdmreason                                                                                          u:object_r:mdmreason_device:s0
 
