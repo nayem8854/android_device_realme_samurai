@@ -6,6 +6,7 @@
 
 #include "AreaCapture.h"
 
+#include <gui/AidlUtil.h>
 #include <gui/SurfaceComposerClient.h>
 #include <gui/SyncScreenCaptureListener.h>
 #include <ui/DisplayState.h>
@@ -20,6 +21,8 @@ using android::sp;
 using android::SurfaceComposerClient;
 using android::SyncScreenCaptureListener;
 using android::gui::ScreenCaptureResults;
+using android::gui::SecureLayerMode;
+using android::gui::aidl_utils::toARect;
 using android::ui::PixelFormat;
 
 namespace aidl {
@@ -51,19 +54,17 @@ sp<IBinder> AreaCapture::getInternalDisplayToken() {
 }
 
 ndk::ScopedAStatus AreaCapture::getAreaBrightness(AreaRgbCaptureResult* _aidl_return) {
-    DisplayCaptureArgs captureArgs;
-    captureArgs.displayToken = getInternalDisplayToken();
-    captureArgs.captureArgs.pixelFormat = static_cast<int32_t>(PixelFormat::RGBA_8888);
-    captureArgs.captureArgs.sourceCrop.left = m_screenshot_rect.left;
-    captureArgs.captureArgs.sourceCrop.top = m_screenshot_rect.top;
-    captureArgs.captureArgs.sourceCrop.right = m_screenshot_rect.right;
-    captureArgs.captureArgs.sourceCrop.bottom = m_screenshot_rect.bottom;
-    captureArgs.width = m_screenshot_rect.getWidth();
-    captureArgs.height = m_screenshot_rect.getHeight();
-    captureArgs.captureArgs.secureLayerMode = ::android::gui::SecureLayerMode::Capture;
+    DisplayCaptureArgs displayCaptureArgs;
+    displayCaptureArgs.displayToken = getInternalDisplayToken();
+   displayCaptureArgs.captureArgs.pixelFormat = ::android::PIXEL_FORMAT_RGBA_8888;
+    displayCaptureArgs.captureArgs.sourceCrop = toARect(m_screenshot_rect);
+    displayCaptureArgs.width = m_screenshot_rect.getWidth();
+    displayCaptureArgs.height = m_screenshot_rect.getHeight();
+    displayCaptureArgs.captureArgs.secureLayerMode = SecureLayerMode::Capture;
 
     sp<SyncScreenCaptureListener> captureListener = new SyncScreenCaptureListener();
-    if (ScreenshotClient::captureDisplay(captureArgs, captureListener) != ::android::NO_ERROR) {
+    if (ScreenshotClient::captureDisplay(displayCaptureArgs, captureListener) !=
+        ::android::NO_ERROR) {
         ALOGE("Capture failed");
         return ndk::ScopedAStatus::fromServiceSpecificError(-1);
     }
