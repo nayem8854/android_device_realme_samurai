@@ -1,46 +1,14 @@
-cc_binary {
-    name: "android.hardware.sensors@2.1-service.samurai",
-    stem: "android.hardware.sensors@2.1-service.multihal",
-    defaults: [
-        "hidl_defaults",
-    ],
-    vendor: true,
-    relative_install_path: "hw",
-    srcs: [
-        "AlsCorrection.cpp",
-        "HalProxy.cpp",
-        "HalProxyCallback.cpp",
-        "service.cpp",
-    ],
-    init_rc: ["android.hardware.sensors@2.1-service-multihal.rc"],
-    vintf_fragments: ["android.hardware.sensors@2.1-multihal.xml"],
-    header_libs: [
-        "android.hardware.sensors@2.X-multihal.header",
-        "android.hardware.sensors@2.X-shared-utils",
-    ],
-    shared_libs: [
-        "android.hardware.sensors@2.0",
-        "android.hardware.sensors@2.0-ScopedWakelock",
-        "android.hardware.sensors@2.1",
-        "libbase",
-        "libbinder",
-        "libbinder_ndk",
-        "libcutils",
-        "libfmq",
-        "libhidlbase",
-        "liblog",
-        "libpower",
-        "libutils",
-        "libbinder_ndk",
-        "vendor.lineage.oplus_als-V1-ndk",
-    ],
-    static_libs: [
-        "android.hardware.sensors@1.0-convert",
-    ],
-}
+//
+// Copyright (C) 2021-2025 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// OPLUS sensor subhal loaded by AOSP android.hardware.sensors@2.1-service.multihal
+// via configs/sensors/hals.conf.
 
 cc_library_shared {
-    name: "sensors.oplus",
+    name: "sensors.oplus.samurai",
     defaults: ["hidl_defaults"],
     srcs: [
         "Sensor.cpp",

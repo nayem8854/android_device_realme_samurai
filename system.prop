@@ -1,3 +1,12 @@
+# BPF: samurai ships a 4.14 kernel, but Android 16 (V+/25Q2) mainline networking
+# (netbpfload + netd BpfHandler) hard-gate on kernel >= 4.19 / 5.4 and abort
+# ("V+ platform with kernel version < 4.19.0 is unsupported"), crashlooping netd.
+# The realme kernel has the required bpf feature backports, so report a new-enough
+# version via AOSP's sanctioned override (bpf/headers KernelUtils.h uncachedKernelVersion).
+# Value matches the proven oneplus/sm8150-common reference (same 4.14.357 kernel),
+# which loads the full program set; a lower value would skip programs gated 5.4-5.10.
+ro.bpf.kver_override=5.10.239
+
 # Art
 dalvik.vm.dex2oat64.enabled=true
 dalvik.vm.boot-dex2oat-cpu-set=0,1,2,3,4,5,6,7
@@ -29,6 +38,7 @@ ro.oplus.system.camera.flashlight=com.oppo.motor.flashlight
 ro.oplus.camera.video_beauty.prefix=oppo.video.beauty.
 ro.oplus.camera.video.beauty.switch=oppo.switch.video.beauty
 persist.vendor.camera.light_ae.enable=1
+ro.oplus.system.camera.name=com.oplus.camera
 
 # Charger
 ro.charger.enable_suspend=true
@@ -58,6 +68,7 @@ ro.vendor.display.ad.sdr_calib_data=/vendor/etc/OPPO_OLED_AD_calib.cfg
 # HWUI
 debug.hwui.use_hint_manager=true
 debug.hwui.target_cpu_time_percent=30
+ro.hwui.render_ahead=3
 
 # IOP
 vendor.iop.enable_prefetch_ofr=1
@@ -78,7 +89,7 @@ vendor.media.vpp.enable=true
 ro.vendor.qti.sys.fw.bservice_enable=true
 
 # Mock
-persist.sys.force_sw_gles=1
+persist.sys.force_sw_gles=0
 
 # Netflix custom property
 ro.netflix.bsp_rev=Q855-16947-1
@@ -133,3 +144,7 @@ persist.vendor.delta_time.enable=true
 
 # WiFi
 config.disable_rtt=true
+wifi.supplicant_scan_interval=120
+
+# Verity
+ro.apk_verity.mode=2

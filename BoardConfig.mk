@@ -6,6 +6,11 @@
 
 BOARD_VENDOR := realme
 
+# A-only device. lineage-23 (Android 16) defaults AB_OTA_UPDATER to true in
+# build/make/core/board_config.mk and marks it read-only, so opt out explicitly
+# or OTA packaging fails with "META/ab_partitions.txt is required for ab_update".
+AB_OTA_UPDATER := false
+
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
@@ -16,7 +21,6 @@ DEVICE_PATH := device/realme/samurai
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-2a-dotprod
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
@@ -81,15 +85,15 @@ BOARD_USES_ALSA_AUDIO := true
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
-MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
+#MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 TARGET_DISABLED_UBWC := true
-TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+#TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_SCREEN_DENSITY := 480
-TARGET_USES_DISPLAY_RENDER_INTENTS := true
+#TARGET_USES_DISPLAY_RENDER_INTENTS := true
 TARGET_USES_COLOR_METADATA := true
-TARGET_USES_DRM_PP := true
-TARGET_USES_GRALLOC4 := true
-TARGET_USES_HWC2 := true
+#TARGET_USES_DRM_PP := true
+#TARGET_USES_GRALLOC4 := true
+#TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
 TARGET_HAS_HDR_DISPLAY := true
 TARGET_HAS_WIDE_COLOR_DISPLAY := true
@@ -98,19 +102,15 @@ TARGET_HAS_WIDE_COLOR_DISPLAY := true
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # FOD
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.samurai
 TARGET_USES_FOD_ZPOS := true
 
 # Hidl
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/device_framework_matrix.xml \
-    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
-    vendor/lineage/config/device_framework_matrix.xml
+    hardware/oplus/vintf/device_framework_matrix.xml \
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
-
-# Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_samurai
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
@@ -141,8 +141,7 @@ BOARD_USES_QCOM_HARDWARE := true
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_qcom
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
@@ -155,6 +154,7 @@ VENDOR_SECURITY_PATCH := 2021-11-05
 
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
+include hardware/oplus/sepolicy/qti/SEPolicy.mk
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public

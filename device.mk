@@ -6,6 +6,14 @@
 
 TARGET_DEVICE := samurai
 
+# Ship APEXes uncompressed. With the default compressed (.capex) apexes, apexd
+# decompresses all 26 of them to /data on first boot (~23s, art.capex alone is
+# 20MB). The OPPO PHOENIX boot watchdog (phx_rus_conf.android_time, ~40s) kills
+# the boot before it completes, so the decompressed copies never persist and
+# every boot re-pays the decompression -> permanent reboot-to-recovery loop.
+# Uncompressed apexes activate in ~2s, letting the boot finish in time.
+OVERRIDE_PRODUCT_COMPRESSED_APEX := false
+
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
@@ -26,6 +34,9 @@ TARGET_SCREEN_WIDTH := 1080
 
 PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 RELAX_USES_LIBRARY_CHECK := true
+
+# Kernel
+PRODUCT_ENABLE_UFFD_GC := true
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -92,7 +103,6 @@ PRODUCT_COPY_FILES += \
 
 # ANT+
 PRODUCT_PACKAGES += \
-    AntHalService-Soong \
     com.dsi.ant@1.0.vendor
 
 # Audio
@@ -100,7 +110,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl:32 \
     android.hardware.audio.effect@6.0-impl:32 \
     android.hardware.audio.service \
-    android.hardware.bluetooth.a2dp@1.0.vendor \
     android.hardware.bluetooth.audio-impl \
     audio.primary.msmnile \
     audio.bluetooth.default \
@@ -186,20 +195,18 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
     disable_configstore \
-    gralloc.msmnile \
-    hwcomposer.msmnile \
+    gralloc.qcom \
+    hwcomposer.qcom \
     libdisplayconfig.qti \
     libqdMetaData \
     libqdMetaData.system \
     libtinyxml \
     libvulkan \
-    memtrack.msmnile \
     vendor.display.config@2.0 \
     vendor.display.config@2.0.vendor \
     vendor.qti.hardware.display.allocator-service \
+    vendor.qti.hardware.memtrack-service \
     vendor.qti.hardware.display.allocator@3.0 \
     vendor.qti.hardware.display.composer@1.0.vendor \
     vendor.qti.hardware.display.composer@2.0.vendor \
@@ -216,9 +223,12 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.samurai \
-    android.hardware.biometrics.fingerprint@2.3.vendor \
-    libshims_fingerprint.samurai
+    android.hardware.biometrics.fingerprint@2.3-service.samurai
+
+# UDFPS extension: device-local build using sysfs/oppo_display paths.
+# hardware/oplus libudfps_extension.oplus uses /dev/oplus_display ioctls
+# which do not exist on samurai (device has /dev/oppo_display via sysfs).
+$(call soong_config_set,surfaceflinger,udfps_lib,//device/realme/samurai/fingerprint:libudfps_extension.samurai)
 
 # fingerprint (IFAA)
 PRODUCT_PACKAGES += \
@@ -229,6 +239,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor
+
+# Shims for legacy vendor/odm blobs
+PRODUCT_PACKAGES += \
+    libba_s \
+    libcryp_s
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.va_aosp.support=1
@@ -265,6 +280,8 @@ PRODUCT_PACKAGES += \
     ims_ext_common.xml
 
 # Init
+$(call soong_config_set,libinit,vendor_init_lib,libinit_samurai)
+
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.class_main.sh \
@@ -321,7 +338,10 @@ PRODUCT_COPY_FILES += \
 
 # Livedisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
+    vendor.lineage.livedisplay-service.oplus
+
+$(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_AF,true)
+$(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_DM,true)
 
 # Native libraries whitelist
 PRODUCT_COPY_FILES += \
@@ -354,13 +374,7 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libcodec2_hidl@1.0.vendor \
     libcodec2_vndk.vendor \
-    libmm-omxcore \
-    libOmxAacEnc \
-    libOmxAmrEnc \
     libOmxCore \
-    libOmxEvrcEnc \
-    libOmxG711Enc \
-    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
     libopus.vendor \
@@ -418,10 +432,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
     $(LOCAL_PATH)/configs/system_ext-privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti.xml
 
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_qcom
-
 # Ril
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.6.vendor \
@@ -445,7 +455,7 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.1-service.multihal \
     libdumpstateutil.vendor:64 \
     libsensorndkbridge \
-    sensors.oplus \
+    sensors.oplus.samurai \
     vendor.lineage.oplus_als.service \
     vendor.oplus.hardware.syshelper.service
 
@@ -458,7 +468,8 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    hardware/oplus
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -473,13 +484,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.qti
-
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samurai
+    vendor.lineage.touch-service.oplus
+
+$(call soong_config_set_bool,OPLUS_LINEAGE_TOUCH_HAL,ENABLE_HTPR,false)
+$(call soong_config_set,OPLUS_LINEAGE_TOUCH_HAL,INCLUDE_DIR,$(LOCAL_PATH)/touch/include)
 
 # USB
 PRODUCT_PACKAGES += \
@@ -487,7 +497,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service.samurai
+    vendor.qti.hardware.vibrator.service.oplus
 
 # WiFi
 PRODUCT_PACKAGES += \

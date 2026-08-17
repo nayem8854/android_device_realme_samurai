@@ -32,10 +32,18 @@ namespace implementation {
 
 BiometricsFingerprint::BiometricsFingerprint() {
     mOplusBiometricsFingerprint = IOplusBiometricsFingerprint::getService();
-    mOplusBiometricsFingerprint->setHalCallback(this);
+    if (mOplusBiometricsFingerprint == nullptr) {
+        ALOGE("Failed to get IOplusBiometricsFingerprint service");
+    } else {
+        mOplusBiometricsFingerprint->setHalCallback(this);
+    }
 
     std::string instanceName = std::string() + IUdfpsHelper::descriptor + "/default";
-    mOplusUdfpsHelper = IUdfpsHelper::fromBinder(ndk::SpAIBinder(AServiceManager_waitForService(instanceName.c_str())));
+    mOplusUdfpsHelper = IUdfpsHelper::fromBinder(
+            ndk::SpAIBinder(AServiceManager_waitForService(instanceName.c_str())));
+    if (mOplusUdfpsHelper == nullptr) {
+        ALOGE("Failed to get IUdfpsHelper service");
+    }
 }
 
 Return<uint64_t> BiometricsFingerprint::setNotify(
@@ -101,7 +109,8 @@ Return<void> BiometricsFingerprint::onFingerDown(uint32_t x, uint32_t y, float m
         setDimlayerHbm(1);
     }
     setFpPress(1);
-    return mOplusBiometricsFingerprint->onFingerDown(x, y, minor, major);
+    // UFF sensors handle finger events internally; forwarding causes double-processing.
+    return isUff() ? Void() : mOplusBiometricsFingerprint->onFingerDown(x, y, minor, major);
 }
 
 Return<void> BiometricsFingerprint::onFingerUp() {
@@ -109,12 +118,12 @@ Return<void> BiometricsFingerprint::onFingerUp() {
     if (!this->isEnrolling) {
         setDimlayerHbm(0);
     }
-    return mOplusBiometricsFingerprint->onFingerUp();
+    // UFF sensors handle finger events internally; forwarding causes double-processing.
+    return isUff() ? Void() : mOplusBiometricsFingerprint->onFingerUp();
 }
 
 Return<void> BiometricsFingerprint::onEnrollResult(uint64_t deviceId, uint32_t fingerId,
                                                    uint32_t groupId, uint32_t remaining) {
-    mClientCallback->onAcquired(deviceId, V2_1::FingerprintAcquiredInfo::ACQUIRED_VENDOR, 0);
     mOplusUdfpsHelper->touchUp();
     return mClientCallback->onEnrollResult(deviceId, fingerId, groupId, remaining);
 }
@@ -132,8 +141,6 @@ Return<void> BiometricsFingerprint::onAuthenticated(uint64_t deviceId, uint32_t 
         setDimlayerHbm(0);
     }
     setFpPress(0);
-    ALOGD("onAuthenticated: Send FP Touch Up");
-    mClientCallback->onAcquired(deviceId, V2_1::FingerprintAcquiredInfo::ACQUIRED_VENDOR, 0);
     mOplusUdfpsHelper->touchUp();
     return mClientCallback->onAuthenticated(deviceId, fingerId, groupId, token);
 }
@@ -171,24 +178,16 @@ Return<void> BiometricsFingerprint::onEngineeringInfoUpdated(
 }
 
 Return<void> BiometricsFingerprint::onFingerprintCmd(int32_t cmdId,
-                                                     const hidl_vec<int8_t>& result,
-                                                     uint32_t resultLen) {
-    uint64_t deviceId = -1;
-    std::copy(result.data(), result.data() + resultLen, &deviceId);
+                                                     const hidl_vec<uint32_t>& /*result*/,
+                                                     uint32_t /*resultLen*/) {
     switch (cmdId) {
         case FINGERPRINT_CALLBACK_CMD_ID_ON_TOUCH_DOWN:
             ALOGD("onFingerprintCmd: FP Touch Down Detected!");
             mOplusUdfpsHelper->touchDown();
-            if (deviceId != -1) {
-                mClientCallback->onAcquired(deviceId, V2_1::FingerprintAcquiredInfo::ACQUIRED_VENDOR, 1);
-            }
             break;
         case FINGERPRINT_CALLBACK_CMD_ID_ON_TOUCH_UP:
             ALOGD("onFingerprintCmd: FP Touch Up Detected!");
             mOplusUdfpsHelper->touchUp();
-            if (deviceId != -1) {
-                mClientCallback->onAcquired(deviceId, V2_1::FingerprintAcquiredInfo::ACQUIRED_VENDOR, 0);
-            }
             break;
     }
     return Void();
