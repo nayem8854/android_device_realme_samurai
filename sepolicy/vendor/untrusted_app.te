@@ -1,0 +1,1 @@
+dontaudit untrusted_app shell_test_data_file:dir search;
