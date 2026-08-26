@@ -19,7 +19,7 @@ on property:perf_profile=1
     write /proc/sys/kernel/sched_downmigrate "55 66"
 
     # skin-therm
-    write /sys/class/thermal/thermal_zone73/cdev0_upper_limit 00
-    write /sys/class/thermal/thermal_zone73/cdev1_upper_limit 00
+    write /sys/class/thermal/thermal_zone73/cdev0_upper_limit 0
+    write /sys/class/thermal/thermal_zone73/cdev1_upper_limit 0
 
     setprop vendor.display.enable_rotator_ui 1

@@ -106,8 +106,6 @@ on boot
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
-    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
-
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
     # the connection they belong to.
@@ -393,8 +391,8 @@ service vendor.hwcomposer-2-4 /vendor/bin/hw/android.hardware.graphics.composer@
     group graphics drmrpc
     capabilities SYS_NICE
     onrestart restart surfaceflinger
-    writepid /dev/cpuset/system-background/tasks
     socket pps stream 0660 system system
+    task_profiles ProcessCapacityHigh HighPerformance
 
 on post-fs-data
     chmod 0666 /mnt/vendor/persist/WCNSS_qcom_cfg.ini
