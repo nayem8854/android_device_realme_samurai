@@ -1,6 +1,5 @@
 typeattribute system_app system_writes_vendor_properties_violators;
 
-allow system_app fs_bpf:dir search;
 allow system_app vendor_sysfs_battery_supply:dir search;
 allow system_app vendor_sysfs_battery_supply:file { open read write getattr };
 allow system_app sysfs_fps:dir search;
