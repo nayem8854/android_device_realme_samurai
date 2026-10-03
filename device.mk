@@ -38,6 +38,9 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 RELAX_USES_LIBRARY_CHECK := true
 
+# ION
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 

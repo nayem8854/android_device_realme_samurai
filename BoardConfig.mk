@@ -150,6 +150,7 @@ ENABLE_VENDOR_RIL_SERVICE := true
 VENDOR_SECURITY_PATCH := 2021-11-05
 
 # Sepolicy
+include device/lineage/sepolicy/libion/sepolicy.mk
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 # hardware/oplus SEPolicy.mk already pulls in device/lineage/sepolicy/libperfmgr
 include hardware/oplus/sepolicy/qti/SEPolicy.mk
