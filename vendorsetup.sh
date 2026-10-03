@@ -13,7 +13,7 @@ SRC_DIR="${PWD}"
 
 OPLUS_DIR="${SRC_DIR}/hardware/oplus"
 OPLUS_REPO="https://github.com/LineageOS/android_hardware_oplus"
-OPLUS_BRANCH="lineage-23.2"
+OPLUS_BRANCH="lineage-24.0"
 
 DOLBY_DIR="${SRC_DIR}/vendor/lunaris/dolby"
 DOLBY_REPO="https://github.com/tranQuila-Project/vendor_lunaris_dolby"

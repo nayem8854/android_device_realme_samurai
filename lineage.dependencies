@@ -2,7 +2,7 @@
   {
     "repository": "android_hardware_oplus",
     "target_path": "hardware/oplus",
-    "branch": "lineage-23.2"
+    "branch": "lineage-24.0"
   },
   {
     "repository": "vendor_lunaris_dolby",
