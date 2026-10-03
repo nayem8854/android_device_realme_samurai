@@ -201,7 +201,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
-    disable_configstore \
     gralloc.qcom \
     hwcomposer.qcom \
     libdisplayconfig.qti \
