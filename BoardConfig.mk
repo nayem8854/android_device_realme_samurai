@@ -67,17 +67,10 @@ BOARD_RAMDISK_USE_LZ4 := true
 TARGET_KERNEL_CONFIG := samurai_defconfig vendor/debugfs.config
 TARGET_KERNEL_SOURCE := kernel/realme/sm8150
 
-# Kernel Clang Flags
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := r563880c
-TARGET_KERNEL_LLVM_BINUTILS := true
-TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    LLVM=1 \
-    LLVM_IAS=1 \
-    HOSTCC=clang \
-    HOSTCXX=clang++ \
-    HOSTLD=ld.lld \
-    HOSTAR=llvm-ar
+# --- প্রি-বিল্ট কার্নেল এবং DTBO ফোর্স করার কোড ---
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/Image.gz-dtb
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilts/dtbo.img
 
 # Platform
 TARGET_BOARD_PLATFORM := msmnile
