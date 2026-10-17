@@ -2,11 +2,26 @@
 userdebug_or_eng(`
   allow {
     hal_audio_default
+    hal_bluetooth_default
     rild
     vendor_cnd
     vendor_dpmd
+    vendor_hal_imsrtp
     vendor_ims
     vendor_netmgrd
     vendor_qti
   } vendor_diag_device:chr_file rw_file_perms;
 ')
+
+dontaudit {
+  hal_audio_default
+  hal_bluetooth_default
+  rild
+  vendor_cnd
+  vendor_dpmd
+  vendor_hal_imsrtp
+  vendor_ims
+  vendor_netmgrd
+  vendor_qti
+} vendor_diag_device:chr_file rw_file_perms;
+
