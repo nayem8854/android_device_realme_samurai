@@ -1,0 +1,2 @@
+# Allow gpuservice to inspect bpf map file attributes
+allow gpuservice fs_bpf:file getattr;

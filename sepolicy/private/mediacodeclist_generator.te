@@ -1,0 +1,2 @@
+# Allow mediacodeclist_generator to read vendor video properties
+get_prop(mediacodeclist_generator, vendor_sys_video_prop)
