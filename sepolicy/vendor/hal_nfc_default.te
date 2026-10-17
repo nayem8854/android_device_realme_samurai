@@ -3,5 +3,6 @@ r_dir_file(hal_nfc_default, vendor_proc_oplus_version)
 
 # Allow hal_nfc_default to add and find hal_nxpnfc_hwservice
 allow hal_nfc_default hal_nxpnfc_hwservice:hwservice_manager { find add };
+allow hal_nfc_default hal_secure_element_hwservice:hwservice_manager find;
 
 set_prop(hal_nfc_default, vendor_nfc_nq_prop)

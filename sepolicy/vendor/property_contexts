@@ -28,8 +28,10 @@ ro.oppo.version                     u:object_r:vendor_camera_prop:s0
 
 # Fingerprint (device-local goodix props; bulk vendor.fingerprint.* is in oplus)
 oplus.optical.goodix.fp             u:object_r:oppo_fp_prop:s0
+persist.vendor.fingerprint.sensor_type u:object_r:oppo_fp_prop:s0
 vendor.fingerprint.optical.goodix.hal.retry u:object_r:oppo_fp_prop:s0
 vendor.fingerprint.cali             u:object_r:oppo_fp_prop:s0
+
 
 # Google camera HAL read-only props
 ro.camera.res.fmq.size              u:object_r:camera_ro_prop:s0

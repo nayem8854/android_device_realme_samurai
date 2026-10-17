@@ -1,1 +1,9 @@
 dontaudit untrusted_app ashmem_device:chr_file open;
+
+# GMS querying USB power supply
+dontaudit gmscore_app vendor_sysfs_usb_supply:dir search;
+dontaudit gmscore_app vendor_sysfs_usb_supply:file r_file_perms;
+
+# Neuralnetworks reading unlabelled default properties
+dontaudit vendor_hal_neuralnetworks_default default_prop:file read;
+

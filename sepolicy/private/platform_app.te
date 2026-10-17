@@ -1,0 +1,2 @@
+# Allow SystemUI (platform_app) to read USB UVC property
+get_prop(platform_app, usb_uvc_enabled_prop)
