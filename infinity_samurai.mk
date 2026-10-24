@@ -35,9 +35,6 @@ TARGET_SUPPORTS_BLUR := true
 
 # GApps defaults; override WITH_GAPPS=false at lunch for vanilla builds.
 WITH_GAPPS := true
-ifeq ($(WITH_GAPPS),true)
-TARGET_BUILD_GOOGLE_TELEPHONY := true
-TARGET_SHIPS_FULL_GAPPS := true
-endif
+TARGET_USES_CORE_GAPPS := true
 
 INFINITY_MAINTAINER := NAYEM
