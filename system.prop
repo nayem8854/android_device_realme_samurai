@@ -108,8 +108,6 @@ persist.rcs.supported=1
 # persist.vendor.radio.* lives in vendor.prop only (partition ownership)
 persist.radio.hvolte.enable=1
 persist.radio.custom_exp_ecc=1
-persist.vendor.radio.data_con_rprt=1
-persist.vendor.radio.process_sups_ind=1
 ril.subscription.types=NV,RUIM
 ro.telephony.default_network=22,22
 telephony.lteOnCdmaDevice=1
