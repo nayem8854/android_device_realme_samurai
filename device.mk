@@ -272,7 +272,8 @@ PRODUCT_PACKAGES += \
 # Shims for legacy vendor/odm blobs
 PRODUCT_PACKAGES += \
     libba_s \
-    libcryp_s
+    libcryp_s \
+    libmpbase_shim
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.va_aosp.support=1

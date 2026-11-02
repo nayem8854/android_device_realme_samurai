@@ -21,3 +21,11 @@ cc_library_shared {
     ],
     vendor: true,
 }
+
+cc_library_shared {
+    name: "libmpbase_shim",
+    srcs: ["mpbase_shim.c"],
+    shared_libs: ["libc"],
+    cflags: ["-Wall", "-Werror"],
+    vendor: true,
+}
