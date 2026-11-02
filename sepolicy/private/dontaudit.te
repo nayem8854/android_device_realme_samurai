@@ -9,3 +9,6 @@ dontaudit vdc self:capability kill;
 
 # kworker threads signal kernel processes internally (e.g. memory reclaim, OOM).
 dontaudit kernel self:capability kill;
+
+# MediaProvider queries isub (radio_service)
+dontaudit mediaprovider_app radio_service:service_manager find;
