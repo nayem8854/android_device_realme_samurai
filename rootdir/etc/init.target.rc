@@ -138,6 +138,8 @@ on boot
     setprop vendor.usb.qdss.inst.name "qdss"
     setprop vendor.usb.controller a600000.dwc3
 
+    write /sys/block/sda/queue/wbt_lat_usec 75000
+
 on property:sys.boot_completed=1
     setprop vendor.setup.power 1
 
@@ -149,7 +151,8 @@ on property:sys.boot_completed=1
 
     # Enable ZRAM on boot_complete
     swapon_all /vendor/etc/fstab.${ro.boot.hardware}
-    write /proc/sys/vm/swappiness 60
+    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/watermark_scale_factor 120
 
     # Setup runtime cpusets
     write /dev/cpuset/top-app/cpus 0-7
