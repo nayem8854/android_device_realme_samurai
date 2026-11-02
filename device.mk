@@ -215,6 +215,7 @@ PRODUCT_PACKAGES += \
     gralloc.qcom \
     hwcomposer.qcom \
     libdisplayconfig.qti \
+    libdisplayconfig.system.qti \
     libqdMetaData \
     libqdMetaData.system \
     libtinyxml \
@@ -574,3 +575,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink
+
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libnl \
+    libpng.vendor \
+    libwfdaac_vendor
