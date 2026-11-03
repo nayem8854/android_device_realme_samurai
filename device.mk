@@ -148,8 +148,7 @@ PRODUCT_PACKAGES += \
     libspkrprot \
     libtinycompress \
     libvolumelistener \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.bluetooth_audio@2.1.vendor
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor
 
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
 
