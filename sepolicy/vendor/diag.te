@@ -10,6 +10,7 @@ userdebug_or_eng(`
     vendor_ims
     vendor_netmgrd
     vendor_qti
+    vendor_sensors_qti
   } vendor_diag_device:chr_file rw_file_perms;
 ')
 
@@ -23,5 +24,6 @@ dontaudit {
   vendor_ims
   vendor_netmgrd
   vendor_qti
+  vendor_sensors_qti
 } vendor_diag_device:chr_file rw_file_perms;
 

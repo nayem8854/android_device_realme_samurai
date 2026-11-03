@@ -3,6 +3,7 @@ dontaudit system_server init:binder call;
 dontaudit system_server sysfs:file r_file_perms;
 
 allow system_server vendor_proc_oplus_version:dir search;
+allow system_server vendor_proc_ultrasound:dir search;
 allow system_server proc_devinfo:dir search;
 rw_dir_file(system_server, vendor_proc_display)
 allow system_server sysfs_rtc:file r_file_perms;
