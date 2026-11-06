@@ -29,6 +29,7 @@ from extract_utils.utils import (
 namespace_imports = [
     'device/realme/samurai',
     'hardware/oplus',
+    'hardware/qcom-caf/common/libqti-perfd-client',
     'hardware/qcom-caf/sm8150',
     'hardware/qcom-caf/wlan',
     'vendor/qcom/opensource/commonsys/display',
@@ -51,7 +52,14 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.imsrtpservice@3.0',
         'vendor.qti.hardware.wifidisplaysession@1.0',
     ): lib_fixup_vendor_suffix,
-    'libPolarrRender': lib_fixup_remove,
+    (
+        'libPolarrRender',
+        'libQTEEConnector_system',
+        'libbsproxy',
+        'libml_util',
+        'vendor.qti.hardware.improvetouch.touchcompanion@1.0',
+        'vendor.qti.qspmhal@1.0',
+    ): lib_fixup_remove,
 }
 
 

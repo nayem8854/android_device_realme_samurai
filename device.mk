@@ -188,7 +188,6 @@ PRODUCT_PACKAGES += \
 TARGET_BUILD_DEVICE_AS_WEBCAM := true
 
 PRODUCT_PACKAGES += \
-    android.frameworks.displayservice@1.0 \
     android.hardware.camera.provider@2.4-impl:64 \
     android.hardware.camera.provider@2.4-service_64 \
     libcamera2ndk_vendor \
@@ -370,6 +369,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/qwerty.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/qwerty.kl
 
 # Media
+PRODUCT_PACKAGES += \
+    libavservices_minijail.vendor
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles_vendor.xml:system/etc/media_profiles_vendor.xml \
     $(LOCAL_PATH)/configs/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
