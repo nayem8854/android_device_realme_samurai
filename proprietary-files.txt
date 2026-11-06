@@ -151,19 +151,19 @@ odm/lib64/libarcsoft_portrait_super_night_raw.so:vendor/lib64/libarcsoft_portrai
 odm/lib64/libarcsoft_scbokeh_video.so:vendor/lib64/libarcsoft_scbokeh_video.so|0f47cb6ac9e4b280e7cd3c484608b9eee855c66f
 odm/lib64/libarcsoft_smart_denoise.so:vendor/lib64/libarcsoft_smart_denoise.so|6e904b17a255417e1ab11f97d44a7874b953e2fe
 odm/lib64/libarcsoft_super_night_raw.so:vendor/lib64/libarcsoft_super_night_raw.so|2eab9e3713a88bcfb2b619e9cb96e9f771c0b196
-odm/lib64/libAlgoInterface.so|628eced936d3e6a81ea6d17e13bf52460473189d
-odm/lib64/libAlgoProcess.so|efc2b2999989ccd5835e465139eae2cacd39af0e
+odm/lib64/libAlgoInterface.so;DISABLE_CHECKELF|628eced936d3e6a81ea6d17e13bf52460473189d
+odm/lib64/libAlgoProcess.so;DISABLE_CHECKELF|efc2b2999989ccd5835e465139eae2cacd39af0e
 odm/lib64/libAncHumBokeh.so|290ca519b7106de22473d8704c0b95d1d1082a09
 odm/lib64/libAncHumBokehPost.so|2465a9f1e581f5620a303da3ce0909e54f9d226f
 odm/lib64/libAncHumVideoBase.so|ad5faf4c58d9dcd1550dbb284ada107eb8792e3b
-odm/lib64/libWaterMark.so|4bdae3b421b45e7b6c1aaaeaff906047cf3b318e
+odm/lib64/libWaterMark.so;DISABLE_CHECKELF|4bdae3b421b45e7b6c1aaaeaff906047cf3b318e
 odm/lib64/libWaterMode.so|5c3de056b4c4fd3cfc1f87db00e40d27ca1fd963
 #odm/lib64/libOPLUS_SCPortrait.so|582272e788680d3c5b498556ee98a904b5fc2a8c
 odm/lib64/libSNPE.so|f3ffab1527763de07abd6ea4889673574b3b1a48
 odm/lib64/libSNPE_G.so|11ba8cf9522ff49013cad25b229e2687fd1e0b3b
 odm/lib64/libTrafficMode.so|e038c755a90843bbb00dccfbbc3eaf2655c603d7
 odm/lib64/libVDBayerHDR.so|a0231ba3447d18e96194ac2255b3403e62d9791d
-odm/lib64/libVDBlurless.so|b505ceafaa7ac7aaea9fc51c9c66112ebbcce016
+odm/lib64/libVDBlurless.so;DISABLE_CHECKELF|b505ceafaa7ac7aaea9fc51c9c66112ebbcce016
 odm/lib64/libVDBlurlessAPI_v2.so|b505ceafaa7ac7aaea9fc51c9c66112ebbcce016
 odm/lib64/libVDDualCameraBlurlessAPI.so|5a30276c6617101102eca46a15a50070f75e7945
 odm/lib64/libVDExternal.so|3e25f17714469a6a8652124ce01a945eb9c8855d
@@ -262,12 +262,12 @@ vendor/lib64/libCOppLceTonemapAPI.so|9ed609f4840643d033c94e8f0fb58c8bee06c245
 vendor/lib64/libDeVIS.so|c5da860bd0e022813f184e62ea37e7c2be291a46
 vendor/lib64/libEIS.so|4b50bbc8a3cdb45368e04bce54a1b8be4b8470b4
 vendor/lib64/libOGLManager.so|4cf82e6d62288e3e1b4f65313b5d970e5f071785
-vendor/lib64/libOPLUS_aisd.so|bda867bc6197bab3ab9a9ba1d3b127004f8cf30b
+vendor/lib64/libOPLUS_aisd.so;DISABLE_CHECKELF|bda867bc6197bab3ab9a9ba1d3b127004f8cf30b
 vendor/lib64/libOPPORectify.so|5e32ded2b9ef0d9db7207e7f9701b4cd3e71ec29
 vendor/lib64/libPerfectlyClearCrux.so|48a0ee3dceabe2ffe647e1d38392ac8f337951fc
 vendor/lib64/libSonyIMX471RmscLibrary.so|6d6709c73873e5d0ef9d5f4ad4fe0b7e83b40b8b
 vendor/lib64/libVDPostureDetection.so|f0adca8072a32870cce2670cc377db7949224b11
-vendor/lib64/libarcsoft_beauty_preview.so|c67a1fa7cd35aca915f2dcb257161ed16b1eadbc
+vendor/lib64/libarcsoft_beauty_preview.so;DISABLE_CHECKELF|c67a1fa7cd35aca915f2dcb257161ed16b1eadbc
 vendor/lib64/libcamera_core_hwi.so|cbb8f61a92ef5142ccf2278a1275d22481b5029a
 vendor/lib64/libcamera_nn_stub.so|a8ffaab7e402f746bacf503c9da0149a0cef9275
 vendor/lib64/libcamxfdalgov7.so|aa3cf08b7c8fa862417d332c2b8012218188b962
@@ -346,7 +346,7 @@ vendor/lib64/camera.device@3.3-impl.so
 
 # Camera - seccam - from OP4A89 SKQ1.211113.001
 system_ext/lib64/libseccam-ipc.so|42891e5d61f1b85e339d005c8e8ae8401515023c
-system_ext/lib64/libseccam.so|41a8121be4506da97d70f9b8bbc354607f96801f
+system_ext/lib64/libseccam.so;DISABLE_CHECKELF|41a8121be4506da97d70f9b8bbc354607f96801f
 system_ext/lib64/libseccamservice.so|5281e1e74de5d917cca850b59957df7daba188f9
 system_ext/priv-app/seccamservice/seccamservice.apk|4faf0cb6e987ed0d7f7e75b05d7fb03d2a8484f7
 vendor/bin/hw/vendor.qti.hardware.seccam@1.0-service-qti|0fdccd13ccd48c8bbebf22c3e20ed8f79816dffb
@@ -663,9 +663,9 @@ vendor/lib/libCB.so|6a3cdb29ae4a3bf199c826dd966e6bd7182a1883
 vendor/lib/libOpenCL.so|6e75e989719cb1758ad6b9f9890eb1c13989af6a
 vendor/lib/libOpenCL_adreno.so
 vendor/lib/libVkLayer_q3dtools.so|c9953ac8a64b9b9a31173c56812bead633a7d379
-vendor/lib/libadreno_app_profiles.so|5aabcb8192b37e10ace61b5af09d27e54900837c
+vendor/lib/libadreno_app_profiles.so;DISABLE_CHECKELF|5aabcb8192b37e10ace61b5af09d27e54900837c
 vendor/lib/libadreno_utils.so|dba1cdabec2c75990e9c194ef9abb4ab9e1dfca8
-vendor/lib/libc2d30_bltlib.so|b39cee73121e2ee3c485f7a21344a3f653079b45
+vendor/lib/libc2d30_bltlib.so;DISABLE_CHECKELF|b39cee73121e2ee3c485f7a21344a3f653079b45
 vendor/lib/libgpudataproducer.so|84eb0a73b58c856fa0a73494e14f2a5d6c9dd7cc
 vendor/lib/libgsl.so|f11778a1870dfbb1c5b6bdd202d938dd0d4ec79b
 vendor/lib/libkcl.so|b6f77098fa4c67415f6df9529b6aab854c365921
@@ -685,9 +685,9 @@ vendor/lib64/libCB.so|1e1f68f4e954617b8879ca980367ef53e82864a3
 vendor/lib64/libOpenCL.so|ecdf2882b7d531c256a780db55fe41a52532242f
 vendor/lib64/libOpenCL_adreno.so
 vendor/lib64/libVkLayer_q3dtools.so|5ddfe2401db02f851d6472a7ba57c5fc67923675
-vendor/lib64/libadreno_app_profiles.so|22c998e0ce12c116dd492c8362624de614af56a4
+vendor/lib64/libadreno_app_profiles.so;DISABLE_CHECKELF|22c998e0ce12c116dd492c8362624de614af56a4
 vendor/lib64/libadreno_utils.so|1c460f799d9c2d7b97b5c6977cbd68f2ee8ed827
-vendor/lib64/libc2d30_bltlib.so|b204da5d59224ec28f452ebf662f187be9214266
+vendor/lib64/libc2d30_bltlib.so;DISABLE_CHECKELF|b204da5d59224ec28f452ebf662f187be9214266
 vendor/lib64/libgpudataproducer.so|ae1e97612796a06a629f56ffb0dca4afb325b6ce
 vendor/lib64/libgsl.so|1420520b888230d4735c2a342314e7c96e649ed5
 vendor/lib64/libkcl.so|f3cadc5c626a02ae354ad1bd082beed6fb640b1b
@@ -723,7 +723,7 @@ vendor/lib64/vendor.qti.hardware.factory@1.1.so|f0218dcb55d38e9875c34489ce31c9f2
 vendor/etc/hbtp/hbtpcfg_sdm855_801s_4k.dat|b3ced41253f704a5f0b190c32935658c2c9ba39c
 vendor/etc/hbtp/loader.cfg|31d256b2945934da327e63925ca01ebb1d5ed1d4
 vendor/etc/hbtp/qtc801s.bin|aeed780565fe45f1ffc196e1cd01808fd61ba9b8
-vendor/lib64/libhbtpclient.so|7ecc7172b2d3ebed91b5c0862178e4c58e6fec14
+vendor/lib64/libhbtpclient.so;DISABLE_CHECKELF|7ecc7172b2d3ebed91b5c0862178e4c58e6fec14
 vendor/lib64/libhbtpdsp.so|6fffa42e0a9da3b9b0c56f6c9d380d84f2b8a5d9
 vendor/lib64/libhbtpfrmwk.so|b828ce3e27079e922e386d40c16cef08dc5141c5
 
@@ -883,7 +883,7 @@ odm/lib/rfsa/adsp/libsnpe_dsp_domains_skel.so
 odm/lib/rfsa/adsp/libsnpe_dsp_skel.so
 odm/lib64/libsnpe_dsp_domains_v2.so
 odm/lib64/libsnpe_loader.so
-odm/lib64/libsnpeml.so
+odm/lib64/libsnpeml.so;DISABLE_CHECKELF
 
 # NFC
 odm/etc/libnfc-nxp-pnscr.conf:odm/etc/libnfc-nxp.conf
@@ -1261,7 +1261,7 @@ vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc|2cfc563d7e157937
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|b53b22c0be01b39eead6490f706e3db660150828
 
 # Vibrator - from RMX1931EX_C.34
-vendor/lib/hw/awinic.haptic.effect.so|3384c2f40d5fc281f0e157e164540fbb6e45fd85
+vendor/lib/hw/awinic.haptic.effect.so;DISABLE_CHECKELF|3384c2f40d5fc281f0e157e164540fbb6e45fd85
 
 # Vibrator firmware - from OnePlus7Pro - QKQ1.190716.003
 vendor/firmware/alarm_breeze.bin|f224eace08b84fea2b05f271bc10f85e114e0f89
@@ -1381,10 +1381,10 @@ vendor/lib64/vendor.qti.hardware.vpp@1.3.so|29a83a2b20f8ca3dab11d9ebbe0ae4292ed7
 odm/bin/hw/android.hardware.drm@1.3-service.widevine
 odm/etc/init/android.hardware.drm@1.3-service.widevine.rc
 odm/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml
-odm/lib/mediadrm/libwvdrmengine.so
-odm/lib64/mediadrm/libwvdrmengine.so
+odm/lib/mediadrm/libwvdrmengine.so;DISABLE_CHECKELF
+odm/lib64/mediadrm/libwvdrmengine.so;DISABLE_CHECKELF
 odm/lib64/liboemcrypto.so
-odm/lib64/libwvhidl.so
+odm/lib64/libwvhidl.so;DISABLE_CHECKELF
 vendor/lib64/libhdcp1prov.so
 vendor/lib64/libhdcp2p2prov.so
 vendor/lib64/libhdcpsrm.so
