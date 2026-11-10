@@ -231,6 +231,9 @@ PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
     wvmkiller
 
+# Face unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
 # Fingerprint
 # Device-local 2.3 wrapper: sysfs /sys/kernel/oppo_display/* + syshelper AIDL.
 PRODUCT_PACKAGES += \
