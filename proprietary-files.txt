@@ -889,8 +889,8 @@ odm/lib64/libsnpeml.so;DISABLE_CHECKELF
 vendor/lib/rfsa/adsp/libsnpe_dsp_v66_domains_v2_skel.so
 
 # NFC
-odm/etc/libnfc-nxp-pnscr.conf:odm/etc/libnfc-nxp.conf
-odm/lib/libsn100u_fw.so
+odm/etc/libnfc-nxp-pnscr.conf:vendor/etc/libnfc-nxp.conf
+odm/lib/libsn100u_fw.so:vendor/lib64/libsn100u_fw.so
 vendor/etc/libnfc-nci.conf
 
 # OPLUS - biometrics - from OP4A89 SKQ1.211113.001

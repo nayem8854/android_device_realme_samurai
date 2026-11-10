@@ -108,7 +108,10 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/libnfc-nxp.conf': blob_fixup()
         .regex_replace('NXP_NFC_DEV_NODE="/dev/pn553"', 'NXP_NFC_DEV_NODE="/dev/nq-nci"')
         .regex_replace('(NXPLOG_.*_LOGLEVEL)=0x03', '\\1=0x02')
-        .regex_replace('NFC_DEBUG_ENABLED=0x01', 'NFC_DEBUG_ENABLED=0x00'),
+        .regex_replace('NFC_DEBUG_ENABLED=0x01', 'NFC_DEBUG_ENABLED=0x00')
+        .regex_replace('NXP_RF_CONF_BLK_2=', '#NXP_RF_CONF_BLK_2=')
+        .regex_replace('NXP_RF_CONF_BLK_3=', '#NXP_RF_CONF_BLK_3=')
+        .regex_replace('NXP_RF_CONF_MAX_NUM=3', 'NXP_RF_CONF_MAX_NUM=1'),
     'vendor/etc/wfdconfig.xml': blob_fixup()
         .regex_replace('<AudioStreamInSuspend>0</AudioStreamInSuspend>', '<AudioStreamInSuspend>1</AudioStreamInSuspend>')
         .regex_replace('<HID>0</HID>', '<HID>1</HID>'),
