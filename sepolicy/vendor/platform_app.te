@@ -3,3 +3,9 @@ dontaudit platform_app vendor_time_daemon:unix_stream_socket connectto;
 
 get_prop(platform_app, bluetooth_finder_prop)
 
+# FPS Info & CRTC nodes for SystemUI
+allow platform_app vendor_sysfs_sde_crtc:dir search;
+allow platform_app sysfs_fps:dir search;
+allow platform_app sysfs_fps:file r_file_perms;
+
+
