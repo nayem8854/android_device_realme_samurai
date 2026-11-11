@@ -278,12 +278,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:$(TARGET_COPY_OUT_ODM)/etc/gps.conf
 
 # Health
-# Proprietary android.hardware.health@2.1-service.samurai is started from init;
-# AOSP unit is installed but disabled there when the .samurai binary is present.
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl:64 \
-    android.hardware.health@2.1-impl.recovery \
-    android.hardware.health@2.1-service
+    android.hardware.health-service.samurai
 
 # Lineage Health — sole charge-limit owner (mmi_charging_enable).
 # RealmeParts SmartCharging is disabled so it cannot fight this node.

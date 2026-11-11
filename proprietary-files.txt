@@ -699,10 +699,6 @@ vendor/lib64/libhbtpclient.so;DISABLE_CHECKELF|7ecc7172b2d3ebed91b5c0862178e4c58
 vendor/lib64/libhbtpdsp.so|6fffa42e0a9da3b9b0c56f6c9d380d84f2b8a5d9
 vendor/lib64/libhbtpfrmwk.so|b828ce3e27079e922e386d40c16cef08dc5141c5
 
-# Health
-vendor/bin/hw/android.hardware.health@2.1-service:vendor/bin/hw/android.hardware.health@2.1-service.samurai
-
-
 # IMS (system) - from LA.QSSI.13.0.r1-05300-qssi.0
 system_ext/app/ImsRcsService/ImsRcsService.apk|c0566bd1093cc281df903f64f62945088d14087b
 system_ext/app/uceShimService/uceShimService.apk|d6de9593cf743440f861f041d4724ec9488e4139

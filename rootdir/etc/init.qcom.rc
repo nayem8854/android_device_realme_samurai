@@ -334,19 +334,12 @@ service vendor.wigig_hostapd /vendor/bin/hw/hostapd -dd  -j wigighostapd /data/v
     oneshot
     disabled
 
-service charger /system/bin/charger
-    class charger
-    user system
-    group system graphics input
-    capabilities SYS_BOOT
-    seclabel u:r:charger:s0
-
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class core
     user root
     group root
 
-on charger
+on property:init.svc.vendor.charger=running
     setprop persist.sys.usb.config mass_storage
 
 on property:vendor.display.lcd_density=*
@@ -400,22 +393,6 @@ on post-fs-data
     # Add for gsi CtsOsTestCases
 on property:ro.vendor.gsi.build.flavor=*
     restorecon /dev/loop-control
-
-service health-hal-2-1 /vendor/bin/hw/android.hardware.health@2.1-service
-    override
-    class hal charger
-    user system
-    group system
-    capabilities WAKE_ALARM BLOCK_SUSPEND
-    file /dev/kmsg w
-    disabled
-
-service health-hal-2-1.samurai /vendor/bin/hw/android.hardware.health@2.1-service.samurai
-    class hal charger
-    user system
-    group system
-    capabilities WAKE_ALARM BLOCK_SUSPEND
-    file /dev/kmsg w
 
 service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display.composer-service
     override

@@ -43,9 +43,6 @@ ro.oplus.camera.video.beauty.switch=oppo.switch.video.beauty
 persist.vendor.camera.light_ae.enable=1
 ro.oplus.system.camera.name=com.oplus.camera
 
-# Charger
-ro.charger.enable_suspend=true
-
 # Data modules
 persist.vendor.data.profile_update=true
 persist.vendor.data.mode=concurrent
